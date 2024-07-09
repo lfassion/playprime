@@ -1,0 +1,22 @@
+version: '3'
+
+networks:
+  backend:
+    external: true
+
+volumes:
+    rancher:
+
+services:
+  playprime-backend:
+    image: httpd:2.4.61
+    container_name: playprime-backend
+    hostname: playprime-backend
+    privileged: true
+    restart: always
+    env_file:
+     - .env
+    ports:
+     - 80:80
+    networks:
+     - backend
